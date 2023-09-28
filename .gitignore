@@ -11,7 +11,7 @@ package-lock.json
 yarn.lock
 
 # Ignore environment variables and configuration files
-backend/venv/
+./venv/
 
 
 # Ignore build and compiled files
