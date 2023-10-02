@@ -30,4 +30,6 @@ dist/
 .DS_Store
 Thumbs.db
 
+formatted_data.json
+
 

@@ -1,14 +1,21 @@
 /* styles/Navbar.css */
 .navbar {
-    padding: 20px;
+    padding: 15px;
     display: flex;
+    background-color: #d1e0e4;
     align-items: center;
-    max-width: 600px;
+    max-width: 6000px;
+    border-radius: 100px;
     margin: 0 auto;
     border-bottom: 1px solid #f2f2f2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Set a higher z-index to make sure it appears on top */
   }
   .navbar h1 {
-    color: #f1356d;
+    color: #0056b3;
   }
   .navbar .links {
     margin-left: auto;
@@ -19,5 +26,5 @@
     padding: 6px;
   }
   .navbar a:hover {
-    color: #f1356d;
+    color: #0056b3;
   }

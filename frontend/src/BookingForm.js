@@ -1,63 +1,101 @@
 import { useState } from "react";
 import './styles/BookingForm.css';
-import FlightList from "./FlightList";
 
-const BookingForm = () => {
+const BookingForm = (props) => {
 
-    const [origin, setOrigin] = useState('ORI');
-    const [destination, setDestination] = useState('BEN DAVID');
-    const [departureDate, setDepartureDate] = useState('2000-02-20');
-    const [returnDate, setReturnDate] = useState('2000-02-20');
-    const [passengers, setPassengers] = useState(1);
+    const randomList = ['NYC', 'AMS', 'ROM', 'IST', 'PAR', 'LON'];
+    var randomIndex = Math.floor(Math.random() * randomList.length);
+    var randomDestination = randomList[randomIndex];
 
-    const [Error, setError] = useState(null);
+    const [originLocationCode, setOriginLocationCode] = useState('TLV');
+    const [destinationLocationCode, setDestinationLocationCode] = useState(randomDestination);
+    const [departureDate, setDepartureDate] = useState('2023-10-10');
+    const [returnDate, setReturnDate] = useState('2023-10-13');
+    const [adults, setAdults] = useState(1);
+
+    const [error, setError] = useState(null);
     const [isPending, setIsPending] = useState(false)
-    const [flights, setflights] = useState(null);
-    const url = 'http://127.0.0.1:8080/submited'
 
-    const handleSubmit = (e) => {
+    const server_search_flight_url = 'http://127.0.0.1:8080/clicked-search-flight'
+    const server_get_AI_travel_plan_url = 'http://127.0.0.1:8080/clicked-get-AI-travel-plan'
+
+    const handleSearchClick = (e) => {
         e.preventDefault();
-        const flight = { origin, destination, departureDate, returnDate, passengers }
-        fetch(url, {
+        setIsPending(true)
+        const flightDetails = { originLocationCode, destinationLocationCode, departureDate, returnDate, adults }
+        fetch(server_search_flight_url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(flight)
+            body: JSON.stringify(flightDetails)
         })
-        .then((response) => {
-            if (!response.ok) {
-                throw Error('could not fetch the data for that resource');
-            }
-            // setOutputString(response.json());
-            setIsPending(false);
-            setError(null);
-            return response.json();
-        })
-        .then((data) => {
-            setflights(data.flights)
-        })
-        .catch(err => {
-            console.log("error")
-            setIsPending(false);
-            setError(err.message)
-        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw Error('could not fetch the data');
+                }
+                setIsPending(false);
+                setError(null);
+                props.handleResponseError(null)
+                return response.json();
+            })
+            .then((data) => {
+                props.handleFlightResponseData(data.flights) // flights is a key word from the json file
+                setIsPending(false)
+
+            })
+            .catch(err => {
+                setIsPending(false);
+                setError(err.message)
+                props.handleResponseError(error)
+            })
     }
+
+    const handleAITravelPlanClick = (e) => {
+        e.preventDefault();
+        setIsPending(true)
+        const flightDetails = { originLocationCode, destinationLocationCode, departureDate, returnDate, adults }
+        fetch(server_get_AI_travel_plan_url, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(flightDetails)
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw Error('could not fetch the data');
+                }
+                setIsPending(false);
+                setError(null);
+                props.handleResponseError(null)
+                return response.json();
+            })
+            .then((data) => {
+                props.handleOpenAiResponseData(data.answer) // answer is a key word from the json file
+                setIsPending(false)
+            })
+            .catch(err => {
+                setIsPending(false);
+                setError(err.message)
+                props.handleResponseError(error)
+            })
+    }
+
+
     return (
         <div className="bookingForm">
             <h2>Enter Flight Details</h2>
-            <form onSubmit={handleSubmit}>
+            <form >
                 <label>Origin:</label>
                 <input
                     type="text"
                     required
-                    value={origin}
-                    onChange={(e) => setOrigin(e.target.value)}
+                    value={originLocationCode}
+                    onChange={(e) => setOriginLocationCode(e.target.value)}
                 />
                 <label>Destination:</label>
                 <input
                     type="text"
                     required
-                    value={destination}
-                    onChange={(e) => setDestination(e.target.value)}
+                    value={destinationLocationCode}
+                    onChange={(e) => setDestinationLocationCode(e.target.value)}
                 />
                 <label>Departure Date:</label>
                 <input
@@ -75,23 +113,20 @@ const BookingForm = () => {
                 <label>Passengers:</label>
                 <input
                     type="number"
-                    value={passengers}
-                    onChange={(e) => setPassengers(e.target.value)}
+                    value={adults}
+                    onChange={(e) => setAdults(e.target.value)}
                     min="1"
                     required
                 />
-                <button>Search Flight</button>
+                <button onClick={handleSearchClick} >Search Flight</button>
+                <button onClick={handleAITravelPlanClick}>Get AI Travel Plan</button>
             </form>
 
-            <div className="flight-details">
+            <div className="pending and errors">
                 {isPending && <div>Loading...</div>}
-                {Error && <div>{Error}</div>}
-                {flights && flights.length > 0 && <FlightList flights={flights}/>}
+                {Error && <div>{error}</div>}
             </div>
-
         </div>
-
-
     );
 }
 

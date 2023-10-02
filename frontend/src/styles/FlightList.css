@@ -1,18 +1,87 @@
 
 /* flight previews / list */
-.flight-preview {
+.flight-card {
     padding: 10px 16px;
     margin: 20px 0;
     border-bottom: 1px solid #fafafa;
-  }
-  .flight-preview:hover {
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
-  }
-  .flight-preview h2 {
-    font-size: 20px;
-    color: #f1356d;
-    margin-bottom: 8px;
-  }
-  .flight-preview a{
-    text-decoration: none;
-  }
+}
+.flight-card:hover {
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.flight-card h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 8px;
+}
+.flight-card a{
+  text-decoration: none;
+}
+
+/*  */
+/* FlightCard.css */
+/* FlightCard.css */
+
+.flight-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-info {
+  display: flex;
+  align-items: center; /* Align items vertically in the same line */
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+}
+
+.carrier-logo img {
+  max-width: 120px;
+  max-height: 60px;
+  margin-right: 10px;
+}
+
+.flight-details {
+  flex: 1;
+}
+
+.flight-number {
+  font-size: 18px;
+  margin: 0;
+}
+
+.origin-destination {
+  font-size: 14px;
+  margin: 0;
+  color: #777;
+}
+
+.flight-price {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: auto; /* Push the button to the bottom */
+}
+
+.button-container {
+  text-align: right;
+}
+
+.action-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}

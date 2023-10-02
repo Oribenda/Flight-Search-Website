@@ -7,11 +7,11 @@ const Navbar = () => {
       <h1>Flight Search Website</h1>
       <div className="links">
         <Link to="/">Home</Link>
-        <Link to="/create" style={{ 
+        <Link to="/log-in" style={{ 
           color: 'white', 
-          backgroundColor: '#f1356d',
+          backgroundColor: '#0056b3',
           borderRadius: '8px' 
-        }}>New Blog</Link>
+        }}>Log-in</Link>
       </div>
     </nav>
   );
