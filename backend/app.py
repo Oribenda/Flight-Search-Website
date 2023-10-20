@@ -3,8 +3,6 @@ from flask_cors import CORS
 import flight_data_fetcher
 import open_ai_data_fetcher
 import user_db_connection
-import json
-from flask import jsonify
 
 app = Flask(__name__)
 
@@ -30,6 +28,7 @@ def get_AI_travel_plan_clicked():
     open_ai_answer = open_ai_data_fetcher.submite_query_to_open_ai(input_data)
     return open_ai_answer, 200
 
+
 @app.route('/clicked-log-in', methods=['POST'])
 def log_in():
     input_data = request.get_json()
@@ -43,11 +42,13 @@ def sign_up():
     json_response, status_code = user_db_connection.sign_up(input_data)
     return json_response, status_code
 
+
 @app.route('/clicked-add-to-favorites', methods=['POST'])
 def add_flight_to_favorites():
     input_data = request.get_json()
     json_response, status_code = user_db_connection.add_flight_to_favorites(input_data)
     return json_response, status_code
+
 
 @app.route('/clicked-save-ai-travel-plan', methods=['POST'])
 def save_ai_travel_plan():

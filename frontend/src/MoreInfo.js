@@ -1,19 +1,18 @@
 import { useState } from 'react';
+import {server_add_to_favorites_url} from './flaskServerURLs'
 import './styles/MoreInfo.css';
 
 const MoreInfo = ({ flight, userInfo }) => {
 
   const [success, setSuccess] = useState(false);
   const [errMsg, setErrMsg] = useState('');
-  const [isPending, setIsPending] = useState(false)
-
-  const url = 'http://127.0.0.1:8080/clicked-add-to-favorites'
+  const [isPending, setIsPending] = useState(false);
 
   const handleClick = () => (e) => {
     e.preventDefault();
-    setIsPending(true)
+    setIsPending(true);
     const favDetailes = { flight, userInfo }
-    fetch(url, {
+    fetch(server_add_to_favorites_url, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(favDetailes)

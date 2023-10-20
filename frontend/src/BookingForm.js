@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './styles/BookingForm.css';
+import { server_search_flight_url, server_get_AI_travel_plan_url } from './flaskServerURLs'
 
 const BookingForm = (props) => {
 
@@ -15,9 +16,6 @@ const BookingForm = (props) => {
 
     const [error, setError] = useState(null);
     const [isPending, setIsPending] = useState(false)
-
-    const server_search_flight_url = 'http://127.0.0.1:8080/clicked-search-flight'
-    const server_get_AI_travel_plan_url = 'http://127.0.0.1:8080/clicked-get-AI-travel-plan'
 
     const handleClick = (isFromOpenAI) => (e) => {
         e.preventDefault();

@@ -2,11 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from 'react-router-dom';
+import { server_sign_up_url } from './flaskServerURLs';
 import './styles/SignUp.css'
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
 
 const SignUp = () => {
   const userRef = useRef();
@@ -46,12 +46,10 @@ const SignUp = () => {
     setErrMsg('');
   }, [username, password, matchPwd])
 
-  const url = 'http://127.0.0.1:8080/clicked-sign-up'
-
   const handleClick = () => (e) => {
     e.preventDefault();
     const SignUpDetails = { username, password }
-    fetch(url, {
+    fetch(server_sign_up_url, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(SignUpDetails)

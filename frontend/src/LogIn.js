@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import { server_log_in_url } from './flaskServerURLs';
 import './styles/LogIn.css'
 
 const LogIn = ({ onLogin }) => {
@@ -10,13 +11,11 @@ const LogIn = ({ onLogin }) => {
     const [success, setSuccess] = useState(false);
     const [isPending, setIsPending] = useState(false);
 
-    const url = 'http://127.0.0.1:8080/clicked-log-in'
-
     const handleClick = () => (e) => {
         e.preventDefault();
         setIsPending(true)
         const loginDetails = { username, password }
-        fetch(url, {
+        fetch(server_log_in_url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(loginDetails)

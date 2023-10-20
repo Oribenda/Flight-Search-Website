@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { server_save_ai_travel_plan_url } from './flaskServerURLs';
 import './styles/TravelPlanAI.css';
 
 const TravelPlanAI = ( {openAiAns, userInfo} ) => {
@@ -7,13 +8,11 @@ const TravelPlanAI = ( {openAiAns, userInfo} ) => {
     const [errMsg, setErrMsg] = useState('');
     const [isPending, setIsPending] = useState(false)
 
-    const url = 'http://127.0.0.1:8080/clicked-save-ai-travel-plan'
-
     const handleClick = () => (e) => {
         e.preventDefault();
         setIsPending(true)
         const favDetailes = { openAiAns, userInfo }
-        fetch(url, {
+        fetch(server_save_ai_travel_plan_url, {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(favDetailes)

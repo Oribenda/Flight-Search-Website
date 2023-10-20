@@ -15,8 +15,7 @@ const FlightList = ({ flights, userInfo}) => {
             setSelectedFlightID(flight.id);
         }
     };
-
-
+    
     return (
         <div className="flight-list">
             {flights.map(flight => (
