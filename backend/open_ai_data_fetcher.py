@@ -1,6 +1,7 @@
 import openai
 import json
 from city_dict import city_dictionary
+import api_keys
 
 
 
@@ -16,7 +17,7 @@ def generate_prompt(departure_date, return_date, destination, interests):
 
 
 def submite_query_to_open_ai(params):
-    openai.api_key = "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"
+    openai.api_key = api_keys.open_ai_key
     # openai.api_key = "sk-9Ya8ecu6HEhkFJ8M8nN3DLtixzZRleXeCc"
 
     departure_date = params.get("departureDate")

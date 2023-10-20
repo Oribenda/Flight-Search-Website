@@ -46,7 +46,7 @@ const UserFavoriteList = ({ userInfo }) => {
         if (userInfo !== null) {
             refreshUserInfo();
         }
-    }, []);
+    });
 
     return (
         <div>

@@ -2,6 +2,7 @@ import pymongo
 from flask import jsonify
 import json
 from flask import jsonify
+import api_keys
 
 
 def sign_up(data):
@@ -84,7 +85,7 @@ def save_open_ai_travel_plan(data):
 
 
 def mongo_db_collection_setup():
-    connection_string = "mongodb+srv://ori8000:ori8000@cluster0.0prwfpf.mongodb.net/?retryWrites=true&w=majority"
+    connection_string = api_keys.mongo_db_key
     db_name = "userInfoDB"
     collection_name = "users"
     client = pymongo.MongoClient(connection_string)

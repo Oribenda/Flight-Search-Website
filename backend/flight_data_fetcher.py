@@ -3,6 +3,7 @@ import requests
 import json
 from flask import jsonify
 import datetime
+import api_keys
 
 
 cache = TTLCache(ttl=1799, maxsize=1)
@@ -14,7 +15,7 @@ def get_headers():
         return cache["key"]
 
     url = "https://test.api.amadeus.com/v1/security/oauth2/token?grant_type=client_credentials"
-    payload = 'grant_type=client_credentials&client_id=Uw0y2n32YHnislVUb7jDH9XptwMTsSY3&client_secret=DLBF2A4b2Vr1n6Af'
+    payload = api_keys.amadeus_api_key
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
