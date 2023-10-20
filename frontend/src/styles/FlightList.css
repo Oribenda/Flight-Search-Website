@@ -17,9 +17,6 @@
   text-decoration: none;
 }
 
-/*  */
-/* FlightCard.css */
-/* FlightCard.css */
 
 .flight-card {
   border: 1px solid #ccc;
@@ -34,7 +31,7 @@
 
 .flight-info {
   display: flex;
-  align-items: center; /* Align items vertically in the same line */
+  align-items: center;
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
   margin-bottom: 10px;
@@ -64,7 +61,7 @@
 .flight-price {
   font-size: 24px;
   font-weight: bold;
-  margin-top: auto; /* Push the button to the bottom */
+  margin-top: auto; 
 }
 
 .button-container {

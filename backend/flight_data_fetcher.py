@@ -38,12 +38,13 @@ def handle_flight_request(input_params):
 
 
 def fetch_data_from_amadeus(params):
+
+    
     amadeus_url = "https://test.api.amadeus.com/v2/shopping/flight-offers"
     additional_params = {"max": 25,
                          "currencyCode": "USD",
                          "nonStop": "true"}
     params.update(additional_params)
-    print(params)
 
     response = requests.get(amadeus_url, params=params,
                             headers=get_headers(), timeout=10)

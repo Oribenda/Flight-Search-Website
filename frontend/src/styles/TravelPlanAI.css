@@ -1,19 +1,18 @@
-/* Add some basic styling to the container */
+/* styles/TravekPlanAI.css */
 .text-container {
     margin: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 25px;
     background-color: #f9f9f9;
-    max-width: 600px; /* Adjust the maximum width as needed */
-    overflow-x: auto; /* Add horizontal scrolling for overflow */
+    max-width: 600px;
+    overflow-x: auto; 
   }
   
-  /* Style the preformatted text */
   .text-content {
     font-size: 16px;
     line-height: 1.6;
-    white-space: pre-wrap; /* Preserve line breaks */
+    white-space: pre-wrap; 
   }
 
   

@@ -4,7 +4,7 @@ import MoreInfo from './MoreInfo';
 
 
 
-const FlightList = ({ flights }) => {
+const FlightList = ({ flights, userInfo}) => {
 
     const [selectedFlightID, setSelectedFlightID] = useState(null);
 
@@ -27,7 +27,6 @@ const FlightList = ({ flights }) => {
                                 src={`./logos/${flight.carrier_code}.png`}
                                 alt={`Logo for ${flight.carrier_code}`}
                                 onError={(e) => {
-                                    // Handle error when logo is not found (e.g., use the default logo)
                                     e.target.src = `./logos/default.png`;
                                 }}
                             />
@@ -50,13 +49,13 @@ const FlightList = ({ flights }) => {
                             onClick={() => {
                                 handleMoreInfoClick(flight);
                             }}>
-                            {(selectedFlightID && selectedFlightID == flight.id)
+                            {(selectedFlightID && selectedFlightID === flight.id)
                                 ? "Hide Info"
                                 : "More Info"}
                         </button>
                     </div>
-                    {selectedFlightID && selectedFlightID == flight.id && (
-                        <MoreInfo flight={flight} />
+                    {selectedFlightID && selectedFlightID === flight.id && (
+                        <MoreInfo flight={flight} userInfo={userInfo}/>
                     )}
                 </div>
 

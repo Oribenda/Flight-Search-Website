@@ -1,20 +1,36 @@
 import './styles/Navbar.css'
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ userInfo, onLogout }) => {
   return (
     <nav className="navbar">
-      <h1>Flight Search Website</h1>
+      <Link to="/" className="headline">Flight Search Website</Link>
       <div className="links">
-        <Link to="/">Home</Link>
-        <Link to="/log-in" style={{ 
-          color: 'white', 
-          backgroundColor: '#0056b3',
-          borderRadius: '8px' 
-        }}>Log-in</Link>
+
+        {userInfo ? (
+
+          <div className="user-info">
+            <Link to="/favorites">Favorites</Link>
+
+            <button onClick={onLogout} style={{
+              color: 'white',
+              backgroundColor: '#0056b3',
+              borderRadius: '8px'
+            }}>Logout</button>
+
+          </div>
+        ) : (
+          <div className="geustInfo">
+            <Link to="/log-in" style={{
+              color: 'white',
+              backgroundColor: '#0056b3',
+              borderRadius: '8px'
+            }}>Log-in</Link>
+          </div>
+        )}
       </div>
     </nav>
   );
 }
- 
+
 export default Navbar;

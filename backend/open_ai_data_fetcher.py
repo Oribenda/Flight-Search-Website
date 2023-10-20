@@ -6,13 +6,12 @@ from city_dict import city_dictionary
 
 def generate_prompt(departure_date, return_date, destination, interests):
     prompt2 = f"Create a schedule with recommended activities for my trip from {departure_date} to the {return_date} in {destination}"
-    prompt = f"Create a daily itinerary for my trip to {destination} from {departure_date} to {return_date}. Please provide recommendations for morning, afternoon, and evening activities for each day of the trip, ensuring that each line does not exceed 100 characters in length. Please ensure line breaks for better formatting on the screen."
+    prompt = f"Create a daily itinerary for my trip to {destination} from {departure_date} to {return_date}. Please provide recommendations for morning, afternoon, and evening activities for each day of the trip, ensuring that each line does not exceed 100 characters in length. Please ensure line breaks for better formatting on the screen. please start your answer by stating the destantion"
     if interests:
         prompt += " I'm interested in: "
         for i in interests:
             prompt += i + ", "
         prompt = prompt[:-2] + "."
-    print(prompt) #DELETE
     return prompt
 
 
@@ -40,7 +39,6 @@ def submite_query_to_open_ai(params):
         open_ai_answer = "Problem connecting to Open AI"
 
     finally:
-        print(open_ai_answer) # DELETE
         json_data = {"answer": open_ai_answer}
         ans_json = json.dumps(json_data)
         return ans_json
