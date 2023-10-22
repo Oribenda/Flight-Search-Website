@@ -1,13 +1,11 @@
-# Flight Search Website ✈️
+# Flight Search Website
 
 **Welcome to the Flight Search Website!** <br/>
 This project is a web application that allows users to search for flights matching their input criteria, get travel plan suggestions from OpenAI, and manage their favorite flights and travel recommendations. The application is built using React for the frontend and Python Flask for the backend.
 
-![Project Demo](demo.gif)
 
 
 ## Demo
-
 
 
 https://github.com/Oribenda/Flight-Search-Website/assets/138500747/73f78517-acb2-4b58-8f2c-76b2aa3da229
@@ -17,6 +15,9 @@ https://github.com/Oribenda/Flight-Search-Website/assets/138500747/73f78517-acb2
 
 https://github.com/Oribenda/Flight-Search-Website/assets/138500747/eaa1484a-87a7-4de6-a7ff-bce9e9a3ca6d
 
+## Project Architecture
+
+<img src="https://github.com/Oribenda/Flight-Search-Website/assets/138500747/dd960279-1546-400d-b53e-336589d8f382" alt="Image Alt Text" width="490" height="400">
 
 
 
@@ -25,6 +26,7 @@ https://github.com/Oribenda/Flight-Search-Website/assets/138500747/eaa1484a-87a7
 
 - [Flight Search Website](#flight-search-website)
   - [Demo](#demo)
+  - [Project Architecture](#project-architecture)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Getting Started](#getting-started)
