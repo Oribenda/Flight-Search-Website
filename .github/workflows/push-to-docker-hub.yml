@@ -10,8 +10,9 @@
 name: Publish Docker image
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - master
 
 jobs:
   push_to_registry:
@@ -39,5 +40,5 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}, oribendavid/flight-search-website-backend:${{ steps.commit_sha.outputs.sha }}
           labels: ${{ steps.meta.outputs.labels }}
