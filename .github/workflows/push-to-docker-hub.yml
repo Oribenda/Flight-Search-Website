@@ -41,5 +41,5 @@ jobs:
           file: ./backend/Dockerfile
           push: true
           tags: |
-            type=raw,value=latest,enable={{is_default_branch}},${{ steps.meta.outputs.tags }}
+            type=raw,value={{branch}}-{{sha}} 
           labels: ${{ steps.meta.outputs.labels }}
