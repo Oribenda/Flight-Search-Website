@@ -4,7 +4,6 @@
 This project is a web application that allows users to search for flights matching their input criteria, get travel plan suggestions from OpenAI, and manage their favorite flights and travel recommendations. The application is built using React for the frontend and Python Flask for the backend.
 
 
-
 ## Demo
 
 
