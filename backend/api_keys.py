@@ -10,11 +10,7 @@ open_ai_key = get_api_key("OPEN_AI_KEY")
 mongo_db_key = get_api_key("MONGO_DB_KEY")
 amadeus_api_key = get_api_key("AMADEUS_API_KEY")
 
-# open_ai_key = os.environ["OPEN_AI_KEY"]
 
-# mongo_db_key = os.environ["MONGO_DB_KEY"]
-
-# amadeus_api_key = os.environ["AMADEUS_API_KEY"]
 
 
 
